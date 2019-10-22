@@ -1,0 +1,70 @@
+import os
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#GPIO.setup(35, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+while True:
+	if(GPIO.input(16) == 1):
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/playlist1.py /dev/ttyACM0')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/apremonition.py /dev/ttyACM0 &')
+		os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/01.\ A\ Premonition.mp3')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/chronotrigger.py /dev/ttyACM0')
+		os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/02.\ Chrono\ Trigger.mp3')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/displayoff.py /dev/ttyACM0')
+		#time.sleep(3.0)
+
+	if(GPIO.input(18) == 1):
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/morningsunlight.py /dev/ttyACM0')
+		os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/03.\ Morning\ Sunlight.mp3 ')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/peacefuldays.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/04.\ Peaceful\ Days.mp3 ')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/guardiamillenialfair.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/06.\ Guardia\ Millenial\ Fair.mp3 ')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/memoriesofgreen.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/05.\ Memories\ Of\ Green.mp3 ')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/600AD.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/09.\ Wind\ Scene.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/secretoftheforest.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/11.\ Secret\ Of\ The\ Forest.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/thetrial.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 1/21.\ The\ Trial.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/thebrinkoftime.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 2/13.\ The\ Brink\ Of\ Time.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/delightfulspekkio.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 2/14.\ Delightful\ Spekkio.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/undergroundsewer.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 2/16.\ Underground\ Sewer.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/rhythmofwind.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 2/20.\ Rhythm\ Of\ Wind\ Sky\ \&\ Earth.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/burnbobonga.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 2/21.\ Burn\!\ Bobonga\!.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/singingmountain.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 3/01.\ Singing\ Mountain\ \(Unreleased\).mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/timecircuits.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 3/04.\ Time\ Circuits.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/underseapalace.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 3/08.\ Undersea\ Palace.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/chronoandmarle.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 3/09.\ Chrono\ And\ Marle.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/epilogue.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 3/16.\ Epilogue\ -\ To\ Good\ Friends.mp3 ')
+                os.system('sudo python /home/pi/ctproject/adafruit_scripts/tofarandawaytimes.py /dev/ttyACM0')
+                os.system('mpg123 -q -m /home/pi/ctproject/media/Chrono\ Trigger/Disc\ 3/17.\ To\ Far\ Away\ Times.mp3 ')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/thebrinkoftime_acidjazz.py /dev/ttyACM0')
+                os.system('mpg123 -q -m -@ /home/pi/ctproject/media/Chrono\ Trigger\ -\ The\ Brink\ Of\ Time/TheBrinkOfTime.m3u ')
+		os.system('sudo python /home/pi/ctproject/adafruit_scripts/displayoff.py /dev/ttyACM0')
+		#time.sleep(3.0)
+
+	#if(GPIO.input(35) == 1):
+		#os.system('sudo pkill -9 mpg123')
+		#time.sleep(2.0)
+
+	#if(GPIO.input(37) == 1):
+		#os.system('sudo shutdown -h -P now')
+		#time.sleep(3.0)
+GPIO.cleanup()

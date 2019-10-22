@@ -1,0 +1,35 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+# Initialize LCD in red200 mode (~/ctproject/adafruit_scripts/redbackground200.py)
+/usr/bin/sudo /usr/bin/python /home/pi/ctproject/adafruit_scripts/lcdstartup.py /dev/ttyACM0
+
+# Run python script to listen for "Next" button press
+# GPIO pin 35
+/usr/bin/sudo /usr/bin/python /home/pi/ctproject/audio_scripts/29jul2015/next.py &
+
+# Run python script to listen for "Shutdown" button press
+# GPIO pin 37
+/usr/bin/sudo /usr/bin/python /home/pi/ctproject/audio_scripts/29jul2015/shutdown.py &
+
+# Run main python script to listen for button presses
+# GPIO pins 16 and 18
+/usr/bin/sudo /usr/bin/python /home/pi/ctproject/audio_scripts/29jul2015/audioPlaylist.py &
+
+exit 0

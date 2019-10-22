@@ -1,0 +1,14 @@
+import os
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(35, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+while True:
+        if(GPIO.input(35) == 1):
+		os.system('sudo pkill -9 mpg123')
+		#time.sleep(6.0)
+		#os.system('sudo pkill -9 mpg123')
+
+GPIO.cleanup()
